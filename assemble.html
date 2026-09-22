@@ -9,64 +9,136 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#
 .card{background:#1a1e33;border:1px solid #2c3150;border-radius:16px;padding:32px;max-width:520px;width:100%;text-align:center}
 h1{font-size:22px;margin:0 0 6px}
 .sub{color:#9aa3c0;margin-bottom:24px;font-size:14px}
-.btn{display:inline-block;background:#4f6ef7;color:#fff;border:none;border-radius:10px;padding:14px 22px;font-size:15px;cursor:pointer;margin:8px 6px;width:calc(50% - 14px);text-decoration:none}
+.btn{display:inline-block;background:#4f6ef7;color:#fff;border:none;border-radius:10px;padding:14px 22px;font-size:15px;cursor:pointer;margin:8px 6px;width:calc(50% - 14px);text-decoration:none;text-align:center}
+.btn.green{background:#2ea44f}
+.btn.orange{background:#d97706}
 .btn.small{font-size:13px;padding:10px 14px;width:auto}
 #log{margin-top:20px;font-size:13px;color:#b9c1dd;text-align:left;white-space:pre-wrap;min-height:60px;border-top:1px solid #2c3150;padding-top:14px}
 .progress{height:8px;background:#2c3150;border-radius:4px;margin-top:10px;overflow:hidden;display:none}
 .progress div{height:100%;width:0;background:#4f6ef7;transition:width .2s}
+#results{display:none;margin-top:18px}
 </style>
 </head>
 <body>
 <div class="card">
   <h1>NexaKeep <span class="sub" style="margin-left:8px">v2.1.0</span></h1>
-  <p class="sub">Assembles the official APK from parts stored in the GitHub repository, then downloads it to your phone/computer.</p>
+  <p class="sub">Assembles the official APK from parts stored in the GitHub repository, then downloads it.</p>
   <button class="btn" onclick="assemble('online')">Download Online APK</button>
   <button class="btn" onclick="assemble('offline')">Download Offline APK</button>
   <div class="progress"><div id="bar"></div></div>
+  <div id="results">
+    <a id="dlLink" class="btn green" download>If nothing downloaded, tap here</a>
+    <button class="btn orange" onclick="shareFile()" id="shareBtn">Save to Files (iOS)</button>
+  </div>
   <div id="log"></div>
 </div>
 <script>
 const COUNTS = { online: 137, offline: 86 };
 const NAMES  = { online: "nexakeep.apk", offline: "nexakeep-offline.apk" };
 const BASE   = "https://raw.githubusercontent.com/somnextech-byte/nexakeep/main/apk";
-const log = document.getElementById("log");
-const bar = document.getElementById("bar");
-const pbar = document.querySelector(".progress");
+const V      = "2026-09-22.3";
+const logEl  = document.getElementById("log");
+const barEl  = document.getElementById("bar");
 
-const q = new URLSearchParams(location.search).get("variant");
+let currentBlob = null;
+
+function log(m){ logEl.textContent = m; }
+
 function pad(n){ return String(n).padStart(3, "0"); }
 
-async function assemble(variant) {
-  document.querySelector(".progress").style.display = "block";
-  log.textContent = "Downloading parts (0/" + COUNTS[variant] + ")...";
-  parts = [];
-  for (let i = 0; i < COUNTS[variant]; i++) {
-    const url = BASE + "/" + variant + "/" + pad(i);
-    for (let tryN = 1; tryN <= 3; tryN++) {
-      try {
-        const r = await fetch(url);
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        parts.push(await r.arrayBuffer());
-        break;
-      } catch (e) {
-        if (tryN === 3) { log.textContent = "Failed to fetch " + url + "\nCheck your internet connection and retry."; return; }
-        await new Promise(res => setTimeout(res, 1500));
-      }
+async function fetchWithRetry(url) {
+  let last;
+  for (let tryN = 1; tryN <= 5; tryN++) {
+    try {
+      const r = await fetch(url, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status + " " + r.statusText);
+      return await r.arrayBuffer();
+    } catch (e) {
+      last = e;
+      if (tryN < 5) await new Promise(res => setTimeout(res, 1500));
     }
-    bar.style.width = ((i + 1) / COUNTS[variant] * 100 | 0) + "%";
-    log.textContent = "Downloading parts (" + (i + 1) + "/" + COUNTS[variant] + ")...";
   }
-  log.textContent = "Joining parts...";
-  const blob = new Blob(parts, { type: "application/vnd.android.package-archive" });
+  throw last;
+}
+
+function runPool(urls, workers, onOne) {
+  return new Promise((resolve, reject) => {
+    let i = 0, done = 0;
+    const results = new Array(urls.length);
+    function nextSlot() {
+      if (done >= urls.length) return resolve(copyOrdered());
+      if (i >= urls.length) return;
+      const idx = i++;
+      fetchWithRetry(urls[idx]).then(buf => {
+        results[idx] = buf;
+        done++; onOne && onOne(done);
+        nextSlot();
+      }).catch(err => { reject(new Error(urls[idx] + " -> " + err.message)); });
+      nextSlot();
+    }
+    for (let w = 0; w < workers && w < urls.length; w++) nextSlot();
+    function copyOrdered() {
+      const out = new Array(urls.length);
+      for (let k = 0; k < results.length; k++) out[k] = results[k];
+      return out;
+    }
+  });
+}
+
+function saveBlob(blob, name) {
+  currentBlob = blob;
+  const u = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = NAMES[variant];
+  a.href = u;
+  a.download = name;
+  document.getElementById("dlLink").href = u;
+  document.getElementById("dlLink").setAttribute("download", name);
+  document.getElementById("dlLink").textContent = "Download again (" + name + ")";
+  document.getElementById("results").style.display = "block";
   document.body.appendChild(a);
   a.click();
-  URL.revokeObjectURL(a.href);
-  bar.style.width = "100%";
-  log.textContent = "Done! " + NAMES[variant] + " (" + (blob.size / 1024 / 1024 | 0) + " MB) downloaded.";
+  setTimeout(function(){ document.body.removeChild(a); }, 1000);
 }
+
+async function shareFile() {
+  if (!currentBlob) return;
+  const f = new File([currentBlob], NAMES[lastVariant], { type: "application/vnd.android.package-archive" });
+  if (navigator.canShare && navigator.canShare({ files: [f] })) {
+    try {
+      await navigator.share({ files: [f] });
+      log("File saved/shared.");
+      return;
+    } catch (e) { /* cancelled */ }
+  }
+  log("Sharing not supported here — tap the green button instead.");
+}
+
+let lastVariant = null;
+
+async function assemble(variant) {
+  lastVariant = variant;
+  document.querySelector(".progress").style.display = "block";
+  barEl.style.width = "0%";
+  document.getElementById("results").style.display = "none";
+  log("Downloading parts from GitHub (" + COUNTS[variant] + " parts)...\nKeep this tab open. Big files take a minute.");
+  const urls = [];
+  for (let i = 0; i < COUNTS[variant]; i++) urls.push(BASE + "/" + variant + "/" + pad(i) + "?v=" + V);
+  try {
+    const parts = await runPool(urls, 6, function(done){
+      barEl.style.width = Math.floor(done / urls.length * 100) + "%";
+      log("Downloading parts (" + done + "/" + urls.length + ")...");
+    });
+    log("Joining " + urls.length + " parts...");
+    const blob = new Blob(parts, { type: "application/vnd.android.package-archive" });
+    saveBlob(blob, NAMES[variant]);
+    barEl.style.width = "100%";
+    log("Ready: " + NAMES[variant] + " (" + Math.floor(blob.size / 1024 / 1024) + " MB).\nIf the download didn't start automatically, tap the green button below. On iPhone, use the orange button to save to Files.");
+  } catch (e) {
+    log("Error: " + e.message + "\nCheck your internet connection and tap the download button again.");
+  }
+}
+
+const q = new URLSearchParams(location.search).get("variant");
 if (q) assemble(q);
 </script>
 </body>
