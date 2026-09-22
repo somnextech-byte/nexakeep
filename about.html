@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Somnex Digimark</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="description"
+        content="Learn more about Somnex Digimark, a company dedicated to empowering retail businesses with smart software solutions." />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Somnex Digimark Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="about.html" class="active" data-i18n="nav_about">About Us</a>
+                <a href="index.html#services" data-i18n="nav_services">Services</a>
+                <a href="download.html" data-i18n="nav_app">Nexakeep App</a>
+                <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+                <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
+                <a href="index.html#contact" data-i18n="nav_contact">Contact Us</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+                <button id="langToggle" class="theme-toggle lang-toggle" aria-label="Switch language">EN</button>
+                <a href="login.html" class="btn btn-primary login-btn" data-i18n="btn_login">Login</a>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="about.html" data-i18n="nav_about">About Us</a>
+            <a href="index.html#services" data-i18n="nav_services">Services</a>
+            <a href="download.html" data-i18n="nav_app">Nexakeep App</a>
+            <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+            <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
+            <a href="index.html#contact" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero-section" style="padding-bottom: 60px; min-height: auto;">
+        <div class="container">
+            <h1 class="hero-title" data-i18n-html="about_title_html">About <span class="highlight">Somnex Digimark</span></h1>
+            <p class="hero-subtitle" data-i18n="about_subtitle">Empowering businesses with innovative technology.</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header" style="max-width: 800px; text-align: left; margin: 0 auto;">
+                <h2 data-i18n="about_mission_title">Our Mission</h2>
+                <p style="margin-bottom: 20px;" data-i18n="about_mission_p1">
+                    At Somnex Digimark, we believe in the power of technology to transform businesses. Our mission is to
+                    provide
+                    smart, scalable, and easy-to-use software solutions that help retail businesses thrive in the
+                    digital age.
+                </p>
+                <p style="margin-bottom: 20px;" data-i18n="about_mission_p2">
+                    Founded with a vision to simplify complex business operations, we specialize in ERP systems, Point
+                    of Sale (POS)
+                    solutions, and comprehensive digital marketing services. Whether you are a small startup or a
+                    growing enterprise,
+                    our tools are designed to streamline your workflow and boost your productivity.
+                </p>
+
+                <h2 style="margin-top: 40px;" data-i18n="about_values_title">Our Values</h2>
+                <ul
+                    style="list-style: disc; padding-left: 20px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">
+                    <li data-i18n-html="about_val_innovation"><strong>Innovation:</strong> We constantly evolve to bring you the best technology.</li>
+                    <li data-i18n-html="about_val_customer"><strong>Customer Success:</strong> Your growth is our priority.</li>
+                    <li data-i18n-html="about_val_integrity"><strong>Integrity:</strong> We build trust through transparency and reliability.</li>
+                    <li data-i18n-html="about_val_simplicity"><strong>Simplicity:</strong> We make complex systems easy to use.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 data-i18n="about_join_title">Join Our Journey</h2>
+            <p class="cta-subtitle" data-i18n="about_join_sub">Let's build the future of your business together.</p>
+            <a href="signup.html" class="btn btn-white btn-lg" data-i18n="about_join_btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <img src="images/logo.png" alt="Somnex Digimark Logo">
+                    </a>
+                    <p data-i18n="footer_desc">Somnex Digimark empowers retail business with smart, scalable, and easy-to-use software
+                        solutions.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_quick_links">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#services" data-i18n="footer_services">Services</a></li>
+                        <li><a href="download.html" data-i18n="footer_app">Nexakeep App</a></li>
+                        <li><a href="index.html#pricing" data-i18n="footer_pricing">Pricing</a></li>
+                        <li><a href="index.html#faq" data-i18n="footer_faq">FAQ</a></li>
+                        <li><a href="index.html#contact" data-i18n="footer_contact">Contact</a></li>
+                        <li><a href="login.html" data-i18n="footer_login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 data-i18n="footer_subscribe">Subscribe</h4>
+                    <p data-i18n="footer_news_sub">Get the latest updates and offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" data-i18n-placeholder="footer_news_ph">
+                        <button type="submit" class="btn btn-primary" data-i18n="footer_news_go">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copyright">Copyright © Somnex Digimark 2026</p>
+                <div class="legal-links">
+                    <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="footer_terms">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+    <script type="module" src="firebase-auth.js"></script>
+</body>
+
+</html>

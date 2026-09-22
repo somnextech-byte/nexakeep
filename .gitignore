@@ -1,0 +1,7 @@
+node_modules/
+dist/
+apks/
+.firebase/
+dev-server.log
+npm-debug.log*
+*.apk

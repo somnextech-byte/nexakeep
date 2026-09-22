@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Somnex Digimark - Smart Retail Software</title>
+    <link rel="icon" type="image/png" sizes="40x38" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="description"
+        content="Take your store to the next level with Somnex Digimark. Smart, scalable, and easy-to-use Services for modern business." />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png">
+            </a>
+            <div class="nav-links">
+                <a href="#home" data-i18n="nav_home">Home</a>
+                <a href="about.html" data-i18n="nav_about">About Us</a>
+                <a href="#services" data-i18n="nav_services">Services</a>
+                <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+                <a href="download.html" data-i18n="nav_app">Nexakeep App</a>
+                <a href="#faq" data-i18n="nav_faq">FAQ</a>
+                <a href="#contact" data-i18n="nav_contact">Contact Us</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+                <button id="langToggle" class="theme-toggle lang-toggle" aria-label="Switch language">EN</button>
+                <a href="login.html" class="btn btn-primary login-btn" data-i18n="btn_login" style="margin-left: 4px;">Login</a>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <a href="#home" data-i18n="nav_home">Home</a>
+            <a href="about.html" data-i18n="nav_about">About Us</a>
+            <a href="#services" data-i18n="nav_services">Services</a>
+            <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+            <a href="download.html" data-i18n="nav_app">Nexakeep App</a>
+            <a href="#faq" data-i18n="nav_faq">FAQ</a>
+            <a href="#contact" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container hero-content">
+            <h1 class="hero-title" data-i18n-html="hero_title_html">Take Your Business to the Next Level with <span class="highlight">Somnex
+                    Digimark</span>
+            </h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Smart, scalable, and easy-to-use services designed for modern business.</p>
+            <div class="hero-cta">
+                <a href="download.html" class="btn btn-lg btn-primary" data-i18n="hero_cta">Try Somnex Digimark free for 14 days</a>
+            </div>
+            <div class="hero-dashboard-wrapper">
+                <div class="hero-dashboard">
+                    <img src="/images/dashboard2.webp" alt="Somnex Digimark Dashboard" class="dashboard-img dashboard-light" fetchpriority="high" decoding="async" />
+                    <img src="/images/dashboard1.webp" alt="Somnex Digimark Dashboard" class="dashboard-img dashboard-dark" loading="lazy" decoding="async" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="services_title">Our services</h2>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">
+                        <!-- SVG ERP Systems -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="svc_erp_title">ERP and POS Systems</h3>
+                    <p data-i18n="svc_erp_desc">Comprehensive enterprise resource planning solutions to streamline your business operations.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-teal">
+                        <!-- SVG Digital Marketing -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="svc_marketing_title">Digital Marketing</h3>
+                    <p data-i18n="svc_marketing_desc">Grow your brand with targeted digital marketing strategies and campaigns.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">
+                        <!-- SVG Designs -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.077-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="svc_design_title">Designs</h3>
+                    <p data-i18n="svc_design_desc">Creative and professional designs services for your brand.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-teal">
+                        <!-- SVG Automation Business Services -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="svc_auto_title">Automation Business Services</h3>
+                    <p data-i18n="svc_auto_desc">Streamline your operations and workflow with customized business automation services.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-teal">
+                        <!-- SVG UI/UX Design -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="svc_saas_title">SaaS Development</h3>
+                    <p data-i18n="svc_saas_desc">Custom Software as a Service (SaaS) solutions built for scalability and growth.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon icon-blue">
+                        <!-- SVG Web Development -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="svc_web_title">Web and app Development</h3>
+                    <p data-i18n="svc_web_desc">Custom web and app development solutions using modern technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="pricing_title">ERP systems and POS systems packages</h2>
+                <div class="pricing-toggle">
+                    <span class="toggle-label" data-i18n="toggle_monthly">Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="billingToggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label active" data-i18n="toggle_annually">Annualy</span>
+                </div>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Starter -->
+                <div class="pricing-card">
+                    <h3 class="plan-name" data-i18n="plan_starter">Starter</h3>
+                    <div class="price" data-i18n="pricing_free_7">Free for 7 days</div>
+                    <ul class="features-list">
+                        <li data-i18n="feat_basic_billing">Basic billing</li>
+                        <li data-i18n="feat_pos">Point of sale(POS)</li>
+                        <li data-i18n="feat_customer_mgmt">Customer Management</li>
+                        <li data-i18n="feat_single_store">Single store</li>
+
+                    </ul>
+                    <div class="sub-packages">
+                        <div class="sub-packages-title" data-i18n="sub_title">Sub Package</div>
+                        <div class="sub-package-grid">
+                            <div class="sub-package-card">
+                                <div class="sp-name" data-i18n="sub_free_14">free for 14 days</div>
+                                <ul class="sp-features">
+                                    <li data-i18n="feat_offline_mode">offline mode</li>
+                                    <li data-i18n="feat_less_updates">less updates</li>
+                                    <li data-i18n="feat_no_backup">No backup data</li>
+                                    <li data-i18n="feat_less_features">less features</li>
+                                </ul>
+                                <a href="download.html?package=starter-pos" class="sp-btn" data-i18n="btn_subscribe">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="download.html?package=starter" class="btn btn-outline btn-block" data-i18n="btn_subscribe">Subscribe</a>
+                </div>
+
+                <!-- Regular -->
+                <div class="pricing-card popular">
+                    <div class="popular-tag" data-i18n="popular_tag">Most popular</div>
+                    <h3 class="plan-name" data-i18n="plan_growth">Growth</h3>
+                    <div class="price">$239.99 <span class="period" data-i18n="period_year">/ Year</span></div>
+                    <ul class="features-list">
+                        <li data-i18n="feat_everything_starter">Everything in Starter</li>
+                        <li data-i18n="feat_unlimited_invoices">Unlimited invoices</li>
+                        <li data-i18n="feat_advanced_reports">Advanced reports</li>
+                        <li data-i18n="feat_multi_user">Multi-user access</li>
+                        <li data-i18n="feat_expense_tracking">Expanse Tracking</li>
+                        <li data-i18n="feat_sales_reports">Sales reports</li>
+
+                    </ul>
+                    <div class="sub-packages">
+                        <div class="sub-packages-title" data-i18n="sub_title">Sub Package</div>
+                        <div class="sub-package-grid">
+                            <div class="sub-package-card">
+                                <div class="sp-name" data-i18n="sub_pos_module">POS Module</div>
+                                <div class="sp-price">$9.99 <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;" data-i18n="period_mo">/mo</span></div>
+                                <ul class="sp-features">
+                                     <li data-i18n="feat_offline_mode">offline mode</li>
+                                    <li data-i18n="feat_less_updates">less updates</li>
+                                    <li data-i18n="feat_no_backup">No backup data</li>
+                                    <li data-i18n="feat_less_features">less features</li>
+                                </ul>
+                                <a href="download.html?package=growth-pos" class="sp-btn" data-i18n="btn_subscribe">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="download.html?package=growth" class="btn btn-primary btn-block" data-i18n="btn_pay_subscribe">Pay & Subscribe</a>
+                </div>
+
+                <!-- Unlimited -->
+                <div class="pricing-card">
+                    <h3 class="plan-name" data-i18n="plan_enterprise">Enterprise</h3>
+                    <div class="price">$599.99 <span class="period" data-i18n="period_year">/ Year</span></div>
+                    <ul class="features-list">
+                        <li data-i18n="feat_everything_growth">Everything in Growth</li>
+                        <li data-i18n="feat_unlimited_stores">Unlimited stores</li>
+                        <li data-i18n="feat_unlimited_users">Unlimited users</li>
+                        <li data-i18n="feat_unlimited_products">Unlimited Products</li>
+                        <li data-i18n="feat_pnl_reports">Profit and Loss reports</li>
+                        <li data-i18n="feat_advanced_analytics">Advanced analytics</li>
+                        <li data-i18n="feat_support_24_7"> 24/7 Priority support</li>
+                    </ul>
+                    <div class="sub-packages">
+                        <div class="sub-packages-title" data-i18n="sub_title">Sub Package</div>
+                        <div class="sub-package-grid">
+                            <div class="sub-package-card">
+                                <div class="sp-name" data-i18n="sub_pos_module">POS Module</div>
+                                <div class="sp-price">$29.99 <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;" data-i18n="period_mo">/mo</span></div>
+                                <ul class="sp-features">
+                                     <li data-i18n="feat_offline_mode">offline mode</li>
+                                    <li data-i18n="feat_less_updates">less updates</li>
+                                    <li data-i18n="feat_no_backup">No backup data</li>
+                                    <li data-i18n="feat_less_features">less features</li>
+                                </ul>
+                                <a href="download.html?package=enterprise-pos" class="sp-btn" data-i18n="btn_subscribe">Subscribe</a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="download.html?package=enterprise" class="btn btn-outline btn-block" data-i18n="btn_pay_subscribe">Pay & Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container faq-container">
+            <div class="faq-content">
+                <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q1">Can I use ERP System and POS systems offline?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a1">Yes, works offline and syncs your data when you're back online.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q2">Is there a free trial?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a2">Absolutely! We offer a 15-day free trial so you can explore all features before
+                                committing.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q3">Can I manage multiple stores?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a3">Yes, our Multi-Store Support feature allows you to manage multiple outlets from a single
+                                dashboard.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span data-i18n="faq_q4">Is customer support available?</span>
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <p data-i18n="faq_a4">Our support team is available via email and chat on WhatsApp to help you with any issues.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-image">
+                <img src="/images/office.png" alt="Customer Support Team" />
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 data-i18n="cta_title">Ready to Get Started?</h2>
+            <p class="cta-subtitle" data-i18n="cta_subtitle">Start your project with a 14-day free trial</p>
+            <a href="#" class="btn btn-white btn-lg" data-i18n="cta_btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Contact & Locations -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <h2 data-i18n="testimonials_title">What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text" data-i18n="testi_1_text">"Somnex Digimark transformed our business operations. The POS features
+                            are intuitive and powerful."</p>
+                        <h4 data-i18n="testi_1_name">Mohamed Yousuf</h4>
+                        <p class="role" data-i18n="testi_1_role">Retail Manager</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text" data-i18n="testi_2_text">"The best decision we made for our store. Inventory management is now a
+                            breeze!"</p>
+                        <h4 data-i18n="testi_2_name">Abdi Hirsi</h4>
+                        <p class="role" data-i18n="testi_2_role">Store Owner</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text" data-i18n="testi_3_text">"Excellent support and seamless UI. Highly recommended for any retail
+                            business."</p>
+                        <h4 data-i18n="testi_3_name">Nagiib Abdi</h4>
+                        <p class="role" data-i18n="testi_3_role">business Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <div class="contact-methods">
+                    <h3 data-i18n="work_title">Let's work together</h3>
+                    <div class="method-card">
+                        <span class="icon">✉️</span>
+                        <div>
+                            <h5 data-i18n="email_us">Email Us</h5>
+                            <p><a href="mailto:somnextech@gmail.com"
+                                    style="color: inherit; text-decoration: none;">somnextech@gmail.com</a></p>
+                        </div>
+                    </div>                 
+                    <div class="method-card">
+                        <span class="icon">🌐</span>
+                        <div>
+                            <h5 data-i18n="follow_us">Follow Us</h5>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/share/17ZcziRSgu/?mibextid=wwXIfr"
+                                    target="_blank">Facebook</a> |
+                                <a href="https://www.tiktok.com/@somnextech" target="_blank">TikTok</a> |
+                                <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" data-i18n="form_name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" data-i18n-placeholder="form_name_ph" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-i18n="form_message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="How can we help you?" data-i18n-placeholder="form_message_ph"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" data-i18n="form_send">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <img src="images/logo.png" alt="Somnex Digimark Logo">
+                    </a>
+                    <p data-i18n="footer_desc">Somnex Digimark empowers retail business with smart, scalable, and easy-to-use software
+                        solutions.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_quick_links">Quick Links</h4>
+                    <ul>
+                        <li><a href="#services" data-i18n="footer_services">Services</a></li>
+                        <li><a href="download.html" data-i18n="footer_app">Nexakeep App</a></li>
+                        <li><a href="#pricing" data-i18n="footer_pricing">Pricing</a></li>
+                        <li><a href="#faq" data-i18n="footer_faq">FAQ</a></li>
+                        <li><a href="#contact" data-i18n="footer_contact">Contact</a></li>
+                        <li><a href="login.html" data-i18n="footer_login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 data-i18n="footer_subscribe">Subscribe</h4>
+                    <p data-i18n="footer_news_sub">Get the latest updates and offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" data-i18n-placeholder="footer_news_ph">
+                        <button type="submit" class="btn btn-primary" data-i18n="footer_news_go">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copyright">Copyright © Somnex Digimark 2026</p>
+                <div class="legal-links">
+                    <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="footer_terms">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+    <script type="module" src="firebase-auth.js"></script>
+
+</body>
+
+</html>

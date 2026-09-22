@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexakeep App - Somnex Digimark</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="description" content="Download the Somnex Digimark APK or access the web version." />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Somnex Digimark Logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav_home">Home</a>
+                <a href="about.html" data-i18n="nav_about">About Us</a>
+                <a href="index.html#services" data-i18n="nav_services">Services</a>
+                <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+                <a href="download.html" class="active" data-i18n="nav_app">Nexakeep App</a>
+                <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
+                <a href="index.html#contact" data-i18n="nav_contact">Contact Us</a>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
+                <button id="langToggle" class="theme-toggle lang-toggle" aria-label="Switch language">EN</button>
+                <a href="login.html" class="btn btn-primary login-btn" data-i18n="btn_login">Login</a>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <a href="about.html" data-i18n="nav_about">About Us</a>
+            <a href="index.html#services" data-i18n="nav_services">Services</a>
+            <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
+            <a href="download.html" data-i18n="nav_app">Nexakeep App</a>
+            <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
+            <a href="index.html#contact" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero-section" style="padding-bottom: 60px; min-height: auto;">
+        <div class="container text-center">
+            <h1 class="hero-title">Nexakeep App <span class="highlight" id="packageName">Your Package</span></h1>
+            <p class="hero-subtitle" data-i18n="dl_subtitle">Choose how you want to access your system.</p>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="download-grid">
+                <!-- Online APK Card -->
+                <div class="download-card">
+                    <div class="download-icon"><img src="images/app logo.png" alt="Online" class="download-app-icon" /></div>
+                    <div class="download-app-label">Nexakeep</div>
+                    <h3 data-i18n="dl_online_title">Online offline APK</h3>
+                    <p class="download-desc" data-i18n="dl_online_desc">Full-featured app with real-time sync and cloud access.</p>
+                    <ul class="download-features">
+                        <li data-i18n="dl_cloud_backup">Cloud backup</li>
+                        <li data-i18n="dl_updates">update support</li>
+                        <li data-i18n="dl_online_orders">online orders</li>
+                        <li data-i18n="dl_advanced">has more advanced features</li>
+                    </ul>
+                    <a href="https://github.com/somnextech-byte/nexakeep/releases/download/v2.1.0/nexakeep.apk" class="btn btn-primary btn-block btn-download" data-i18n="dl_download_online">Download Online APK</a>
+                </div>
+
+                <!-- Offline APK Card -->
+                <div class="download-card">
+                    <div class="download-icon"><img src="images/app logo.png" alt="Offline" class="download-app-icon" /></div>
+                    <div class="download-app-label">Nexakeep</div>
+                    <h3 data-i18n="dl_offline_title">full Offline APK</h3>
+                    <p class="download-desc" data-i18n="dl_offline_desc">Lightweight app that works fully offline — no internet needed.</p>
+                    <ul class="download-features">
+                        <li data-i18n="dl_works_offline">full Works offline</li>
+                        <li data-i18n="dl_no_backup">no backup</li>
+                        <li data-i18n="dl_limited">limited features</li>
+                    </ul>
+                    <a href="https://github.com/somnextech-byte/nexakeep/releases/download/v2.1.0/nexakeep-offline.apk" class="btn btn-primary btn-block btn-download" data-i18n="dl_download_offline">Download Offline APK</a>
+                </div>
+
+                <!-- Website Card -->
+                <div class="download-card">
+                    <div class="download-icon"><img src="images/app logo.png" alt="Web" class="download-app-icon" /></div>
+                    <div class="download-app-label">Nexakeep</div>
+                    <h3 data-i18n="dl_web_title">Web Version</h3>
+                    <p class="download-desc" data-i18n="dl_web_desc">Access the system directly from your browser — no installation needed.</p>
+                    <ul class="download-features">
+                        <li data-i18n="dl_any_device">Works on any device</li>
+                        <li data-i18n="dl_no_install">No installation required</li>
+                        <li data-i18n="dl_up_to_date">Always up to date</li>
+                    </ul>
+                    <a href="https://nexakeep.web.app/" target="_blank" class="btn btn-primary btn-block" data-i18n="dl_open_website">Open Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 data-i18n="dl_help_title">Need Help Getting Started?</h2>
+            <p class="cta-subtitle" data-i18n="dl_help_sub">Contact us and we'll help you set up your system.</p>
+            <a href="index.html#contact" class="btn btn-white btn-lg" data-i18n="nav_contact">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <img src="images/logo.png" alt="Somnex Digimark Logo">
+                    </a>
+                    <p data-i18n="footer_desc">Somnex Digimark empowers retail business with smart, scalable, and easy-to-use software
+                        solutions.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_quick_links">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#services" data-i18n="footer_services">Services</a></li>
+                        <li><a href="download.html" data-i18n="footer_app">Nexakeep App</a></li>
+                        <li><a href="index.html#pricing" data-i18n="footer_pricing">Pricing</a></li>
+                        <li><a href="index.html#faq" data-i18n="footer_faq">FAQ</a></li>
+                        <li><a href="index.html#contact" data-i18n="footer_contact">Contact</a></li>
+                        <li><a href="login.html" data-i18n="footer_login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4 data-i18n="footer_subscribe">Subscribe</h4>
+                    <p data-i18n="footer_news_sub">Get the latest updates and offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" data-i18n-placeholder="footer_news_ph">
+                        <button type="submit" class="btn btn-primary" data-i18n="footer_news_go">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copyright">Copyright &copy; Somnex Digimark 2026</p>
+                <div class="legal-links">
+                    <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="footer_terms">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const pkg = params.get('package');
+        const pkgName = document.getElementById('packageName');
+        if (pkg) {
+            pkgName.dataset.pkg = pkg;
+        }
+
+        (function () {
+            const theme = localStorage.getItem('theme');
+            if (theme) document.documentElement.dataset.theme = theme;
+        })();
+
+        document.querySelectorAll('.btn-download').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var url = this.href;
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = url;
+                document.body.appendChild(iframe);
+                setTimeout(function() { document.body.removeChild(iframe); }, 30000);
+            });
+        });
+    </script>
+</body>
+
+</html>
