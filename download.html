@@ -1,199 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nexakeep App - Somnex Digimark</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/favicon.png">
-    <meta name="description" content="Download the Somnex Digimark APK or access the web version." />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexaKeep v2.1.0 — Download APK</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0a0d1c;color:#e7e9f4;margin:0;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:16px}
+.card{background:#12162b;border:1px solid #242a4d;border-radius:18px;padding:30px;max-width:520px;width:100%;text-align:center}
+h1{margin:0 0 6px;font-size:24px}
+.sub{color:#8f98c4;font-size:14px;margin:0 0 22px}
+.btn{display:block;width:100%;box-sizing:border-box;background:#3f5bf5;color:#fff;border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:600;cursor:pointer;margin:8px 0}
+.btn.off{background:#7c4df0}
+.btn.green{background:#1fbf57;display:none}
+.btn.gray{background:#313a63;font-size:13px;display:none;margin-top:2px}
+.pwrap{background:#1b2140;border-radius:8px;height:9px;overflow:hidden;margin:14px 0 4px;display:none}
+.pwrap div{height:100%;width:0;background:#3f5bf5}
+#log{margin-top:16px;font-size:13px;color:#aab3dc;text-align:left;white-space:pre-wrap;min-height:70px;border-top:1px solid #242a4d;padding-top:14px}
+</style>
 </head>
-
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Somnex Digimark Logo">
-            </a>
-            <div class="nav-links">
-                <a href="index.html" data-i18n="nav_home">Home</a>
-                <a href="about.html" data-i18n="nav_about">About Us</a>
-                <a href="index.html#services" data-i18n="nav_services">Services</a>
-                <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
-                <a href="download.html" class="active" data-i18n="nav_app">Nexakeep App</a>
-                <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
-                <a href="index.html#contact" data-i18n="nav_contact">Contact Us</a>
-            </div>
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">🌙</button>
-                <button id="langToggle" class="theme-toggle lang-toggle" aria-label="Switch language">EN</button>
-                <a href="login.html" class="btn btn-primary login-btn" data-i18n="btn_login">Login</a>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-menu">
-            <a href="index.html" data-i18n="nav_home">Home</a>
-            <a href="about.html" data-i18n="nav_about">About Us</a>
-            <a href="index.html#services" data-i18n="nav_services">Services</a>
-            <a href="index.html#pricing" data-i18n="nav_pricing">Pricing</a>
-            <a href="download.html" data-i18n="nav_app">Nexakeep App</a>
-            <a href="index.html#faq" data-i18n="nav_faq">FAQ</a>
-            <a href="index.html#contact" data-i18n="nav_contact">Contact Us</a>
-        </div>
-    </nav>
+<div class="card">
+  <h1>NexaKeep <span style="font-size:13px;color:#6c769f">v2.1.0</span></h1>
+  <p class="sub">Tap a button. The APK is assembled from parts stored in the repository and downloads automatically to this device.</p>
+  <button class="btn" onclick="go('online')">Download Online APK</button>
+  <button class="btn off" onclick="go('offline')">Download Offline APK</button>
+  <div class="pwrap"><div id="bar"></div></div>
+  <button class="btn green" id="saveBtn" onclick="saveBlob()">Save APK</button>
+  <button class="btn gray" id="shareBtn" onclick="shareBlob()">Share / Save to Files (iPhone)</button>
+  <div id="log">Tap one of the buttons above. Keep this tab open until the download finishes.</div>
+</div>
+<script>
+var COUNTS = { online: 137, offline: 86 };
+var NAMES  = { online: "nexakeep.apk", offline: "nexakeep-offline.apk" };
+var BASE   = "https://somnextech-byte.github.io/nexakeep/apk";
+var logEl    = document.getElementById("log");
+var barEl    = document.getElementById("bar");
+var saveBtn  = document.getElementById("saveBtn");
+var shareBtn = document.getElementById("shareBtn");
+var parts = [];
+var blob;
+var variant;
 
-    <!-- Page Header -->
-    <section class="hero-section" style="padding-bottom: 60px; min-height: auto;">
-        <div class="container text-center">
-            <h1 class="hero-title">Nexakeep App <span class="highlight" id="packageName">Your Package</span></h1>
-            <p class="hero-subtitle" data-i18n="dl_subtitle">Choose how you want to access your system.</p>
-        </div>
-    </section>
+function pad(n){ return ("000" + n).slice(-3); }
+function setLog(m){ logEl.textContent = m; }
 
-    <!-- Download Section -->
-    <section class="features-section">
-        <div class="container">
-            <div class="download-grid">
-                <!-- Online APK Card -->
-                <div class="download-card">
-                    <div class="download-icon"><img src="images/app logo.png" alt="Online" class="download-app-icon" /></div>
-                    <div class="download-app-label">Nexakeep</div>
-                    <h3 data-i18n="dl_online_title">Online offline APK</h3>
-                    <p class="download-desc" data-i18n="dl_online_desc">Full-featured app with real-time sync and cloud access.</p>
-                    <ul class="download-features">
-                        <li data-i18n="dl_cloud_backup">Cloud backup</li>
-                        <li data-i18n="dl_updates">update support</li>
-                        <li data-i18n="dl_online_orders">online orders</li>
-                        <li data-i18n="dl_advanced">has more advanced features</li>
-                    </ul>
-                    <a href="https://somnextech-byte.github.io/nexakeep/assemble.html?variant=online&v=3" class="btn btn-primary btn-block btn-download" data-i18n="dl_download_online">Download Online APK</a>
-                </div>
+function fetchRetry(u, tryN){
+  tryN = tryN || 1;
+  return fetch(u, { cache: "no-store" }).then(function(r){
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.arrayBuffer();
+  }).catch(function(e){
+    if (tryN >= 8) throw e;
+    return new Promise(function(res){ setTimeout(function(){
+      res(fetchRetry(u, tryN + 1));
+    }, 1400 * tryN); });
+  });
+}
 
-                <!-- Offline APK Card -->
-                <div class="download-card">
-                    <div class="download-icon"><img src="images/app logo.png" alt="Offline" class="download-app-icon" /></div>
-                    <div class="download-app-label">Nexakeep</div>
-                    <h3 data-i18n="dl_offline_title">full Offline APK</h3>
-                    <p class="download-desc" data-i18n="dl_offline_desc">Lightweight app that works fully offline — no internet needed.</p>
-                    <ul class="download-features">
-                        <li data-i18n="dl_works_offline">full Works offline</li>
-                        <li data-i18n="dl_no_backup">no backup</li>
-                        <li data-i18n="dl_limited">limited features</li>
-                    </ul>
-                    <a href="https://somnextech-byte.github.io/nexakeep/assemble.html?variant=offline&v=3" class="btn btn-primary btn-block btn-download" data-i18n="dl_download_offline">Download Offline APK</a>
-                </div>
+function firstAvail(queue){
+  return queue.length ? queue.shift() : null;
+}
 
-                <!-- Website Card -->
-                <div class="download-card">
-                    <div class="download-icon"><img src="images/app logo.png" alt="Web" class="download-app-icon" /></div>
-                    <div class="download-app-label">Nexakeep</div>
-                    <h3 data-i18n="dl_web_title">Web Version</h3>
-                    <p class="download-desc" data-i18n="dl_web_desc">Access the system directly from your browser — no installation needed.</p>
-                    <ul class="download-features">
-                        <li data-i18n="dl_any_device">Works on any device</li>
-                        <li data-i18n="dl_no_install">No installation required</li>
-                        <li data-i18n="dl_up_to_date">Always up to date</li>
-                    </ul>
-                    <a href="https://nexakeep.web.app/" target="_blank" class="btn btn-primary btn-block" data-i18n="dl_open_website">Open Website</a>
-                </div>
-            </div>
-        </div>
-    </section>
+function startPool(urls, workers, onOne, done) {
+  var i = 0;
+  var results = new Array(urls.length);
+  function next(){
+    if (done.cancelled) return;
+    if (i >= urls.length) return;
+    var idx = i++;
+    fetchRetry(urls[idx]).then(function(buf){
+      results[idx] = buf;
+      onOne && onOne(idx, results.length);
+      next();
+    }).catch(function(e){
+      done.fail = urls[idx] + " -> " + e.message;
+      if (done.onfail) done.onfail(urls[idx], e);
+    });
+    next();
+  }
+  for (var w = 0; w < workers; w++) next();
+  return function(){ return results; };
+}
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container text-center">
-            <h2 data-i18n="dl_help_title">Need Help Getting Started?</h2>
-            <p class="cta-subtitle" data-i18n="dl_help_sub">Contact us and we'll help you set up your system.</p>
-            <a href="index.html#contact" class="btn btn-white btn-lg" data-i18n="nav_contact">Contact Us</a>
-        </div>
-    </section>
+async function go(v) {
+  variant = v;
+  parts = [];
+  blob = null;
+  saveBtn.style.display = "none";
+  shareBtn.style.display = "none";
+  barEl.parentNode.style.display = "block";
+  barEl.style.width = "0%";
+  setLog("Downloading " + COUNTS[v] + " parts...\n(The APK is ~" + (v === "online" ? 84 : 52) + " MB, split into 614 KB parts. This takes about a minute — please keep this tab open.)");
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="#" class="footer-logo">
-                        <img src="images/logo.png" alt="Somnex Digimark Logo">
-                    </a>
-                    <p data-i18n="footer_desc">Somnex Digimark empowers retail business with smart, scalable, and easy-to-use software
-                        solutions.
-                    </p>
-                </div>
-                <div class="footer-links">
-                    <h4 data-i18n="footer_quick_links">Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html#services" data-i18n="footer_services">Services</a></li>
-                        <li><a href="download.html" data-i18n="footer_app">Nexakeep App</a></li>
-                        <li><a href="index.html#pricing" data-i18n="footer_pricing">Pricing</a></li>
-                        <li><a href="index.html#faq" data-i18n="footer_faq">FAQ</a></li>
-                        <li><a href="index.html#contact" data-i18n="footer_contact">Contact</a></li>
-                        <li><a href="login.html" data-i18n="footer_login">Login</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h4 data-i18n="footer_subscribe">Subscribe</h4>
-                    <p data-i18n="footer_news_sub">Get the latest updates and offers.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" data-i18n-placeholder="footer_news_ph">
-                        <button type="submit" class="btn btn-primary" data-i18n="footer_news_go">Go</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p data-i18n="footer_copyright">Copyright &copy; Somnex Digimark 2026</p>
-                <div class="legal-links">
-                    <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
-                    <a href="#" data-i18n="footer_terms">Terms & Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+  var urls = [];
+  for (var i = 0; i < COUNTS[v]; i++) urls.push(BASE + "/" + v + "/" + pad(i));
 
-    <script type="module" src="main.js"></script>
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const pkg = params.get('package');
-        const pkgName = document.getElementById('packageName');
-        if (pkg) {
-            pkgName.dataset.pkg = pkg;
-        }
+  var done = { cancelled: false, fail: null, onfail: null };
+  var total = 0;
+  var workers = 4;
+  var started = 0;
 
-        (function () {
-            const theme = localStorage.getItem('theme');
-            if (theme) document.documentElement.dataset.theme = theme;
-        })();
-
-        document.querySelectorAll('.btn-download').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                var url = this.href;
-                var iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = url;
-                document.body.appendChild(iframe);
-                setTimeout(function() { document.body.removeChild(iframe); }, 30000);
-            });
+  try {
+    var results = await new Promise(function(resolve, reject) {
+      var doneCount = 0;
+      var INDEX = [];
+      done.onfail = function(u, e) {
+        reject(new Error(u + " -> " + e.message));
+      };
+      var go2 = function() {
+        if (started >= urls.length) return;
+        var idx = started++;
+        fetchRetry(urls[idx]).then(function(buf){
+          INDEX[idx] = buf;
+          doneCount++;
+          barEl.style.width = Math.round(doneCount / urls.length * 100) + "%";
+          setLog("Downloading parts (" + doneCount + "/" + urls.length + ")...\nKeep this tab open.");
+          if (doneCount === urls.length) {
+            var ordered = [];
+            for (var k = 0; k < urls.length; k++) ordered.push(INDEX[k]);
+            resolve(ordered);
+          } else {
+            go2();
+          }
+        }).catch(function(e){
+          reject(new Error(urls[idx] + " -> " + e.message));
         });
-    </script>
-</body>
+        go2();
+      };
+      for (var w = 0; w < workers && w < urls.length; w++) go2();
+    });
 
+    setLog("Joining " + urls.length + " parts...");
+    blob = new Blob(results, { type: "application/vnd.android.package-archive" });
+    barEl.style.width = "100%";
+    setLog("Done! " + (blob.size / 1048576 | 0) + " MB APK assembled.\nDownloading now — if nothing happens, tap the green Save APK button (or Share on iPhone).");
+    saveBtn.style.display = "block";
+    shareBtn.style.display = "block";
+    saveBlob();
+  } catch (e) {
+    setLog("Download failed: " + e.message + "\n\nYour internet connection may have dropped or is slow. Tap the button to try again.\nIf it keeps failing, use a PC (PowerShell method) — it always works.");
+  }
+}
+
+function saveBlob(){
+  if (!blob) return;
+  try {
+    var u = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = u;
+    a.download = NAMES[variant];
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){ document.body.removeChild(a); }, 4000);
+  } catch (e) {}
+}
+
+function shareBlob(){
+  if (!blob) return;
+  var f = new File([blob], NAMES[variant], { type: "application/vnd.android.package-archive" });
+  if (navigator.canShare && navigator.canShare({ files: [f] })) {
+    navigator.share({ files: [f] }).catch(function(){});
+  } else {
+    setLog("Sharing isn't supported by this browser. Use the green Save APK button (or on iPhone, long-press the link and choose Save Link / Save to Files).");
+  }
+}
+</script>
+</body>
 </html>
