@@ -12,10 +12,10 @@ NexaKeep is a point-of-sale (POS) web application with a companion Android app (
 
 ## Downloads (v2.1.0)
 
-- **Online APK:** https://github.com/somnextech-byte/nexakeep/releases/download/v2.1.0/nexakeep.apk
-  Full-featured app with real-time sync and cloud access (Firebase).
-- **Offline APK:** https://github.com/somnextech-byte/nexakeep/releases/download/v2.1.0/nexakeep-offline.apk
-  Lightweight app that works fully offline — no internet needed.
+- **Online APK:** https://cdn.jsdelivr.net/gh/somnextech-byte/nexakeep@main/assemble.html?variant=online
+  Full-featured app with real-time sync and cloud access (Firebase). APK parts stored in this repo under `apk/online/`.
+- **Offline APK:** https://cdn.jsdelivr.net/gh/somnextech-byte/nexakeep@main/assemble.html?variant=offline
+  Lightweight app that works fully offline — no internet needed. APK parts stored in this repo under `apk/offline/`.
 - **Web version:** https://nexakeep.web.app/
 
 ## Tech Stack
